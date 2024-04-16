@@ -4,6 +4,7 @@
 #pragma once
 
 #include <iostream>
+#include <chrono>
 
 // TODO: Reference additional headers your program requires here.
 // I am only including this file here so that Visual Studio doesn't lose it

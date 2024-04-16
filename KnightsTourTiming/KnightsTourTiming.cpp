@@ -6,7 +6,6 @@
 // Then provides the ability to display the board with the given path.
 //-----------------------------------------------------------------------------
 
-#include <iostream>
 #include "KnightsTourTiming.h"
 #include "ChessBoard.h"
 using namespace std;
@@ -26,12 +25,18 @@ int main(void) {
 	cin >> col;
 
 	// start measuring time here
+	chrono::steady_clock::time_point start = chrono::steady_clock::now(); // ensures no negative time progression
+
 	if (myBoard.solveIt(row, col))
 		cout << "\nSolved! ";
 	else
 		cout << "\nNo solution found! ";
 
 	// end measuring time here, do computation and print it out
+	chrono::steady_clock::time_point stop = chrono::steady_clock::now(); // the stopping time point
+	// the next line prints out the duration after casting it to microseconds
+	// this is much more elegant than multiplying by 1000, although it's wordier
+	cout << "in " << chrono::duration_cast<chrono::microseconds>(stop - start).count() << " microseconds\n" << endl;
 
 	myBoard.display(cout);
 
